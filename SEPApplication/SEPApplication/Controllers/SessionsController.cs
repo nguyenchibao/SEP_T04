@@ -10,6 +10,7 @@ namespace SEPApplication.Controllers
     {
         //
         // GET: /Sessions/
+        //tan
         public ActionResult Index()
         {
             return View();
