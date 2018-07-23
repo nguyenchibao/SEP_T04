@@ -12,7 +12,7 @@ using SEPApplication.Models;
 
 namespace SEPApplication.Controllers
 {
-    [Authorize]
+   // [Authorize]
     public class AccountController : Controller
     {
         public AccountController()
@@ -43,8 +43,10 @@ namespace SEPApplication.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
+            /*
             if (ModelState.IsValid)
             {
+
                 var user = await UserManager.FindAsync(model.UserName, model.Password);
                 if (user != null)
                 {
@@ -56,8 +58,23 @@ namespace SEPApplication.Controllers
                     ModelState.AddModelError("", "Invalid username or password.");
                 }
             }
-
+            */
             // If we got this far, something failed, redisplay form
+
+            var result = new API().Login(model.UserName, model.Password);
+            if (result.Code == 0)
+            {
+                Session["Email"] = model.UserName;
+                Session["ID"] = result.Data.Id;
+                Session["Secret"] = result.Data.Secret;
+
+                return RedirectToLocal(returnUrl);
+
+            }
+            else
+            {
+                ModelState.AddModelError("", "Invalid username or password");
+            }
             return View(model);
         }
 
@@ -287,8 +304,13 @@ namespace SEPApplication.Controllers
         // POST: /Account/LogOff
         [HttpPost]
         [ValidateAntiForgeryToken]
+
         public ActionResult LogOff()
         {
+            Session["Email"] = null;
+            Session["ID"] = null;
+            Session["Secret"] = null;
+
             AuthenticationManager.SignOut();
             return RedirectToAction("Index", "Home");
         }
