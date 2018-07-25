@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "Home Page";
 }
-
+@*Session hd trên cơ chế cookie, duy trì đăng nhập. lưu tạm các biến email, id, serect*@
 <div class="jumbotron">
     @if(Session["Email"] == null)
     {
