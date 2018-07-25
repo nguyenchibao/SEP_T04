@@ -11,6 +11,7 @@ namespace SEPApplication
 {
     public class API
     {
+        // xem cấu trúc trên api
         public class LoginData
         {
             public string Id { get; set; }
@@ -36,15 +37,18 @@ namespace SEPApplication
             public CourseData[] Data { get; set; }
             public string Messenger { get; set; }
         }
+        // login trả về kiểu loginresult
         public LoginResult Login(string username, string password)
         {
             using (var client = new WebClient())
             {
                 var form = new NameValueCollection();
+                // lấy thông tin từ api về
                 form["Username"] = username;
                 form["Password"] = password;
+                // lấy tt từ api về trả lưu vô biến result kiểu byte[]
                 var result = client.UploadValues("http://cntttest.vanlanguni.edu.vn:8080/CMU/SEPAPI/SEP21/Login", "POST", form);
-
+                //ép kiểu đưa về mong muốn là string đưa vô thư viện
                 var json = Encoding.UTF8.GetString(result);
                 return JsonConvert.DeserializeObject<LoginResult>(json);
                 
@@ -59,6 +63,7 @@ namespace SEPApplication
         {
             using (var client = new WebClient())
             {
+                // lấy khóa học nhân về
                 var json = client.DownloadString(
                     "http://cntttest.vanlanguni.edu.vn:8080/CMU/SEPAPI/SEP21" + "/GetCourses?lecturerID=" + lecturerID);
 
