@@ -15,12 +15,43 @@ namespace SEPApplication.Controllers
         private sepoopcsEntities db = new sepoopcsEntities();
 
         // GET: /Attendance/
-        public ActionResult Index()
+        public ActionResult Index(int courseId, int sessionId)
         {
-            var attendances = db.Attendances.Include(a => a.Member).Include(a => a.Session);
-            return View(attendances.ToList());
+            ViewBag.CourseId = courseId;
+            ViewBag.SessionId = sessionId;
+            var member = db.Members.Where(n => n.Course_id == courseId).ToList();
+            ViewBag.Session = db.Sessions.Find(sessionId);
+            return View(member);
+            
         }
+        public ActionResult Check(int courseId, int sessionId)
+        {
+            try
+            {
+                foreach (var attendance in db.Attendances.Where(a => a.Session_id == sessionId))
+                {
+                    db.Entry(attendance).State = EntityState.Deleted;
+                }
+               
+                foreach (var key in this.Request.Form.AllKeys.Where(k => k.StartsWith("C_")))
+                {
+                    var id = key.Split('_')[1];
+                    db.Attendances.Add(new Attendance
+                    {
 
+                        Session_id = sessionId,
+                        Member_id = int.Parse(id)
+                    });
+                }
+                db.SaveChanges();
+                return RedirectToAction("Index", "Session", new { courseId = courseId});
+            }
+            catch(Exception)
+            {
+                return RedirectToAction("Index", new { courseId = courseId, sessionId= sessionId});
+            }
+            
+        }
         // GET: /Attendance/Details/5
         public ActionResult Details(int? id)
         {
