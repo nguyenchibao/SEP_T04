@@ -1,0 +1,50 @@
+﻿@model List<SEPApplication.Models.Member>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Attendance</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+           Student's Infor
+        </th>
+        <th>
+            @((ViewBag.Session as SEPApplication.Models.Session).Date.ToLongDateString())
+        </th>
+        <th></th>
+    </tr>
+@using (Html.BeginForm("Check","Attendance"))
+{
+    @Html.Hidden("CourseId", ViewData["CourseId"])
+    @Html.Hidden("SessionId", ViewData["SessionId"])
+    foreach (var item in Model)
+    {
+    <tr>
+        <td>
+           @item.Code-@item.Fullname- @item.Birthday
+        </td>
+        <td>
+            @Html.CheckBox("C_" + item.id, false)
+        </td>
+       
+    </tr>
+    }
+    <tr>
+        <td>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="SAVE" class="btn btn-default" />
+                </div>
+            </div>
+        </td>
+    </tr>
+
+}
+
+</table>
