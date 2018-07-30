@@ -15,9 +15,11 @@ namespace SEPApplication.Controllers
         private sepoopcsEntities db = new sepoopcsEntities();
 
         // GET: /Session/
-        public ActionResult Index()
+        public ActionResult Index(int courseId)
         {
-            var sessions = db.Sessions.Include(s => s.Course);
+            ViewBag.DB=db;
+            ViewBag.CourseId = courseId;
+            var sessions = db.Sessions.Where(s => s.Course_id == courseId);
             return View(sessions.ToList());
         }
 
