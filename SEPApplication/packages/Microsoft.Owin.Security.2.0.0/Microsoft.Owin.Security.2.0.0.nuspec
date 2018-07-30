@@ -8,8 +8,9 @@
     <owners>Microsoft</owners>
     <licenseUrl>http://www.microsoft.com/web/webpi/eula/aspnetcomponent_rtw_enu.htm</licenseUrl>
     <projectUrl>http://katanaproject.codeplex.com/</projectUrl>
-    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Common types which are shared by the various authentication middleware components.</description>
+    <summary />
     <tags>Microsoft OWIN</tags>
     <dependencies>
       <dependency id="Owin" version="1.0" />

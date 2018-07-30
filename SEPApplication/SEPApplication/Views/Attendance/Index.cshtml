@@ -1,10 +1,10 @@
-﻿@model IEnumerable<SEPApplication.Models.Attendance>
+﻿@model List<SEPApplication.Models.Member>
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Attendance</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -12,28 +12,39 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Member.Code)
+           Student's Infor
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Session.Info)
+            @((ViewBag.Session as SEPApplication.Models.Session).Date.ToLongDateString())
         </th>
         <th></th>
     </tr>
-
-@foreach (var item in Model) {
+@using (Html.BeginForm("Check","Attendance"))
+{
+    @Html.Hidden("CourseId", ViewData["CourseId"])
+    @Html.Hidden("SessionId", ViewData["SessionId"])
+    foreach (var item in Model)
+    {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Member.Code)
+           @item.Code-@item.Fullname- @item.Birthday
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Session.Info)
+            @Html.CheckBox("C_" + item.id, false)
         </td>
+       
+    </tr>
+    }
+    <tr>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="SAVE" class="btn btn-default" />
+                </div>
+            </div>
         </td>
     </tr>
+
 }
 
 </table>

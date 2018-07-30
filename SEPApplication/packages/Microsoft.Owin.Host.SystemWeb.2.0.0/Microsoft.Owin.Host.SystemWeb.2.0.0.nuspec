@@ -8,8 +8,9 @@
     <owners>Microsoft</owners>
     <licenseUrl>http://www.microsoft.com/web/webpi/eula/aspnetcomponent_rtw_enu.htm</licenseUrl>
     <projectUrl>http://katanaproject.codeplex.com/</projectUrl>
-    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>OWIN server that enables OWIN-based applications to run on IIS using the ASP.NET request pipeline.</description>
+    <summary />
     <tags>Microsoft OWIN</tags>
     <dependencies>
       <group targetFramework=".NETFramework4.0">

@@ -15,25 +15,20 @@ namespace SEPApplication.Controllers
         private sepoopcsEntities db = new sepoopcsEntities();
 
         // GET: /Session/
-        public ActionResult Index()
+        public ActionResult Index(int courseId)
         {
-            var sessions = db.Sessions.Include(s => s.Course);
+            ViewBag.DB= db;
+            ViewBag.CourseId= courseId;
+
+            var sessions = db.Sessions.Where(s => s.Course_id == courseId);
             return View(sessions.ToList());
         }
 
         // GET: /Session/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Attendance(int courseId, int sessionId)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Session session = db.Sessions.Find(id);
-            if (session == null)
-            {
-                return HttpNotFound();
-            }
-            return View(session);
+            return RedirectToAction("Index", "Attendance", new { courseId = courseId, sessionId = sessionId });
+
         }
 
         // GET: /Session/Create

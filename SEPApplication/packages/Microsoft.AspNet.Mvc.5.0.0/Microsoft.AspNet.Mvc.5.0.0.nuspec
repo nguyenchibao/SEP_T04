@@ -8,9 +8,10 @@
     <owners>Microsoft</owners>
     <licenseUrl>http://www.microsoft.com/web/webpi/eula/aspnetcomponent_rtw_ENU.htm</licenseUrl>
     <projectUrl>http://www.asp.net/mvc</projectUrl>
-    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>This package contains the runtime assemblies for ASP.NET MVC. ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that enables a clean separation of concerns and that gives you full control over markup.</description>
     <summary>This package contains the runtime assemblies for ASP.NET MVC.</summary>
+    <releaseNotes>Please go here to view the release notes: http://go.microsoft.com/fwlink/?LinkID=320753&amp;clcid=0x409</releaseNotes>
     <copyright>© Microsoft Corporation. All rights reserved.</copyright>
     <language>en-US</language>
     <tags>Microsoft AspNet Mvc AspNetMvc</tags>

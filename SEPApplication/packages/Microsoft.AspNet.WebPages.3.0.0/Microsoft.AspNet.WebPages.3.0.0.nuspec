@@ -8,9 +8,10 @@
     <owners>Microsoft</owners>
     <licenseUrl>http://www.microsoft.com/web/webpi/eula/aspnetcomponent_rtw_ENU.htm</licenseUrl>
     <projectUrl>http://www.asp.net/web-pages</projectUrl>
-    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>This package contains core runtime assemblies shared between ASP.NET MVC and ASP.NET Web Pages.</description>
     <summary>This package contains core runtime assemblies shared between ASP.NET MVC and ASP.NET Web Pages.</summary>
+    <releaseNotes>Please go here to view the release notes: http://go.microsoft.com/fwlink/?LinkID=320753&amp;clcid=0x409</releaseNotes>
     <copyright>© Microsoft Corporation. All rights reserved.</copyright>
     <language>en-US</language>
     <tags>Microsoft AspNet WebPages AspNetWebPages</tags>

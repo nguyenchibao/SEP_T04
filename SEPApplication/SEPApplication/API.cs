@@ -37,6 +37,18 @@ namespace SEPApplication
             public CourseData[] Data { get; set; }
             public string Messenger { get; set; }
         }
+        public class StudentData{
+            public string Id{ get; set;}
+            public string Fullname{get; set;}
+            public DateTime Birthday{get;set;}
+
+        }
+        public class GetStudentResult
+        {
+            public int Code { get; set; }
+            public string Message { get; set; }
+           public StudentData Data {get;set;}
+        }
         // login trả về kiểu loginresult
         public LoginResult Login(string username, string password)
         {
@@ -71,5 +83,18 @@ namespace SEPApplication
 
             }
         }
+        public GetStudentResult GetStudent(string code)
+        {
+             using (var client = new WebClient())
+            {
+                // lấy khóa học nhân về
+                var json = client.DownloadString(
+                    "http://cntttest.vanlanguni.edu.vn:8080/CMU/SEPAPI/SEP21" + "/GetStudent?code=" + code);
+
+                return JsonConvert.DeserializeObject<GetStudentResult>(json);
+
+            }
+        }
+
     }
 }

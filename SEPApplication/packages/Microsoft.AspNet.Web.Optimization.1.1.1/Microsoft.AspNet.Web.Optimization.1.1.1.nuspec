@@ -7,7 +7,7 @@
     <authors>Microsoft</authors>
     <owners>Microsoft</owners>
     <licenseUrl>http://www.microsoft.com/web/webpi/eula/aspnetcomponent_rtw_enu.htm</licenseUrl>
-    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>ASP.NET Optimization introduces a way to bundle and optimize CSS and JavaScript files.</description>
     <summary>ASP.NET Optimization introduces a way to bundle and optimize CSS and JavaScript files.</summary>
     <copyright>© Microsoft Corporation. All rights reserved.</copyright>

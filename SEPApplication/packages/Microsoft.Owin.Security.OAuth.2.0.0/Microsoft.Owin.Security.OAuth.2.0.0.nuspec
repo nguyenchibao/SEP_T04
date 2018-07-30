@@ -8,8 +8,9 @@
     <owners>Microsoft</owners>
     <licenseUrl>http://www.microsoft.com/web/webpi/eula/aspnetcomponent_rtw_enu.htm</licenseUrl>
     <projectUrl>http://katanaproject.codeplex.com/</projectUrl>
-    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Middleware that enables an application to support any standard OAuth 2.0 authentication workflow.</description>
+    <summary />
     <tags>Microsoft OWIN</tags>
     <dependencies>
       <dependency id="Owin" version="1.0" />
