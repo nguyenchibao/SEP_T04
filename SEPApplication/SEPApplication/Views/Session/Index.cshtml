@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<SEPApplication.Models.Session>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Session";
 }
 
 <h2>Index</h2>
@@ -36,10 +36,11 @@
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { courseId=ViewBag.CourseId, sessionId=item.id }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.id })
         </td>
     </tr>
 }
 
 </table>
+}
