@@ -17,6 +17,8 @@ namespace SEPApplication.Controllers
         // GET: /Member/
         public ActionResult Index(int courseId)
         {
+            ViewBag.DB = db;
+            ViewBag.CourseId = courseId;
             var members = db.Members.Where(m => m.Course_id == courseId);
             return View(members.ToList());
         }

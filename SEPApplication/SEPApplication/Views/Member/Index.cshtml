@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Index";
-    
+    var db = ViewBag.DB as SEPApplication.Models.sepoopcsEntities;
 }
 
 <h2>Index</h2>
@@ -19,10 +19,11 @@
             @Html.DisplayNameFor(model => model.Fullname)
         </th>
         <th>
-           Radio
+           Day
         </th>
+       
         <th>
-            @Html.DisplayNameFor(model => model.Course.Code)
+           Radio
         </th>
         <th></th>
     </tr>
@@ -39,7 +40,13 @@
             @Html.DisplayFor(modelItem => item.Birthday)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Course.Code)
+           @{
+    var courseId = (int)ViewBag.CourseId;
+    var sessionList = db.Sessions.Where(s => s.Course_id == courseId).Select(s => s.id);
+    var attendence = db.Attendances.ToList();
+    var count = attendence.Count(a => a.Member_id == item.id && sessionList.Contains(a.Session_id));
+           }
+            @count/@sessionList.Count()
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.id }) |

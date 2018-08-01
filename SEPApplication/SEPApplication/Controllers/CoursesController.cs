@@ -17,6 +17,9 @@ namespace SEPApplication.Controllers
         // GET: /Courses/
         public ActionResult Index()
         {
+            //ViewBag.DB = db;
+            //ViewBag.CourseId= courseId;
+           
             return View(db.Courses.ToList());
         }
 
@@ -70,6 +73,7 @@ namespace SEPApplication.Controllers
             {
                 return HttpNotFound();
             }
+            
             return View(course);
         }
 
@@ -86,6 +90,7 @@ namespace SEPApplication.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+           
             return View(course);
         }
 

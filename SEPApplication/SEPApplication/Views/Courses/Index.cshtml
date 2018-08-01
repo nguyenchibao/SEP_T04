@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Index";
+    var db = ViewBag.DB as SEPApplication.Models.sepoopcsEntities;
 }
 
 <h2>Index</h2>
@@ -20,9 +21,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Info)
         </th>
-        <th>
-            Radio
-        </th>
+        
         <th>
             @Html.DisplayNameFor(model => model.Lecturer)
         </th>
@@ -40,6 +39,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.Info)
         </td>
+       
         <td>
             @Html.DisplayFor(modelItem => item.Lecturer)
         </td>
